@@ -1,22 +1,22 @@
-# Hardware Comparison for LLM Inference Tasks
+# A Simplified Roofline Model for Comparing Hardware Performance on LLM Inference Tasks
 
-This repo contains scripts that use the roofline model to compare the performance of Large Language Model (LLM) inference tasks on different hardware platforms.
+This repository provides scripts that leverage the roofline model to compare the performance of Large Language Model (LLM) inference tasks across various hardware platforms.
 
-In LLM inference tasks, there are multiple factors that affect performance on different hardware. I list them as follows:
+In LLM inference tasks, several factors can influence performance on different hardware. These factors include:
 
-- Batch Size: The batch size refers to the number of samples used to update the model weights in one iteration. A larger batch size may increase computational efficiency but may also increase memory requirements.
+- Batch Size: The batch size usually refers to the number of requests forward at the same time.
 
-- KV Cache Length: In Transformer models, the KV cache length refers to the length of the cache used to store key-value pairs. This parameter may affect the model's memory requirements and computational efficiency.
+- KV Cache Length: In Transformer models, the KV cache length refers to the length of the cache used to store key-value pairs.
 
-- Model Hidden Size: The hidden size refers to the dimension of the hidden layers in the model. A larger hidden size may increase the complexity and memory requirements of the model, but it may also improve the model's performance.
+- Hidden Size: The hidden size refers to the dimension of the hidden layers in the model.
 
-- Intermediate Size: The intermediate size refers to the dimension of the fully connected layers in the model. This parameter may affect the complexity and memory requirements of the model.
+- Intermediate Size: The intermediate size refers to the dimension of the fully connected layers in the model.
 
-- GQA: GQA can reduce KVCache memory consumption therefore reduce the memory bandwidth required to fetch them.
+- GQA: the group number of the Grouped Query Attention.
 
-- MoE : MoE (Mixture of Experts) is a technique used to improve model performance. The configuration of MoE may affect the complexity and memory requirements of the model.
+- MoE : Mixture of Experts configurations.
 
-We present the speedup between two hardware in a mesh. For example:
+We present the speedup between two hardware platforms in a mesh. For instance:
 
 For LLAMA2 70B, in some scenerios, A800 is better than H20 on, especially for large batch sizes.
 
