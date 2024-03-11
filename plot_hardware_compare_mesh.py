@@ -72,7 +72,7 @@ model_dict = {
 },
 }
 
-model_name = "Mixtral-8x7B"
+model_name = "LLAMA2_70B"
 
 h1_name = "A800"
 h2_name = "H20"
