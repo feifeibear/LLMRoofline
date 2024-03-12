@@ -42,7 +42,7 @@ MODEL_DICT = {
 # https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1/blob/main/config.json
 {
 "h" : 4096,
-"in" : 14336,
+"hi" : 14336,
 "gqa_grp" : 32 / 8,
 "type" : "moe",
 "model_id" : "/Users/jiaruifang/Documents/plot/perfmodel/models/Mixtral_8x7B",

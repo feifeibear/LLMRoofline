@@ -13,7 +13,7 @@ parser = argparse.ArgumentParser(description='Plot Speedup for LLM Models')
 
 parser.add_argument('--max_bs', type=int, default=257, help='Maximum Batch Size')
 parser.add_argument('--max_seq_len', type=int, default=2049, help='Maximum Sequence Length')
-parser.add_argument('--model_name', type=str, default="LLAMA2_70B", help='Model Name')
+parser.add_argument('--model_name', type=str, default="Mixtral_8x7B", help='Model Name')
 parser.add_argument('--hw1', type=str, default="nvidia_A100", help='First Hardware Name')
 parser.add_argument('--hw2', type=str, default="nvidia_H20", help='Second Hardware Name')
 
@@ -41,11 +41,16 @@ fig, axs = plt.subplots(1, 2, figsize=(12, 6))
 for ax, USE_LLM_VIEWER in zip(axs, [True, False]):
     color_grid = np.zeros((len(bs_values), len(seq_len_values)))
 
+    is_error = False
     for i, bs in enumerate(bs_values):
         for j, seq_len in enumerate(seq_len_values):
             if USE_LLM_VIEWER:
-                perf1 = get_llm_viewer_model(model_id, hw1_name, bs, seq_len)
-                perf2 = get_llm_viewer_model(model_id, hw2_name, bs, seq_len)
+                try:
+                    perf1 = get_llm_viewer_model(model_id, hw1_name, bs, seq_len)
+                    perf2 = get_llm_viewer_model(model_id, hw2_name, bs, seq_len)
+                except:
+                    is_error = True
+                    continue
             else:
                 flops1 = HARDWARE_DICT[hw1_name]["flops"]
                 bwd1 = HARDWARE_DICT[hw1_name]["bwd"]
@@ -62,8 +67,9 @@ for ax, USE_LLM_VIEWER in zip(axs, [True, False]):
             condition = perf1 / perf2
             color_grid[i, j] = condition
 
-    cax = ax.pcolormesh(seq_len_values, bs_values, color_grid, shading='auto', cmap='viridis')
-    fig.colorbar(cax, ax=ax)
+    if not is_error:
+        cax = ax.pcolormesh(seq_len_values, bs_values, color_grid, shading='auto', cmap='viridis')
+        fig.colorbar(cax, ax=ax)
 
     ax.set_xlabel('Sequence Length')
     ax.set_ylabel('Batch Size')
