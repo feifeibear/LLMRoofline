@@ -16,15 +16,18 @@ In LLM inference tasks, several factors can influence performance on different h
 
 - MoE : Mixture of Experts configurations.
 
-We present the speedup between two hardware platforms in a mesh and compare our naive roofline model with a more complex one in [LLM-Viewer](https://github.com/hahnyuan/LLM-Viewer). For instance:
+
+For Mixtral-8X7B MoE, A800 is always worse than H20.
+
+<p align="center">
+  <img src="./media/mistral7b_moe.png" alt="The speedup of A800/H20 on Mistral-8x7B" width="50%">
+</p>
+
+We present the speedup between two hardware platforms in a mesh and compare our naive roofline model with a more complex one from [LLM-Viewer](https://github.com/hahnyuan/LLM-Viewer). 
+Although the two models are not exactly the same, they exhibit similar distribution patterns.
+For instance:
 
 For LLAMA2 70B, in some scenerios, A800 is better than H20 on, especially for large batch sizes.
 
 ![The speedup of A800/H20 on LLAMA2 70B](./media/llama2_70b.png)
 
-
-For  Mixtral-8X7B MoE, A800 is always worse than H20.
-
-<p align="center">
-  <img src="./media/mistral7b_moe.png" alt="The speedup of A800/H20 on Mistral-8x7B" width="50%">
-</p>
