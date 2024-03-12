@@ -5,17 +5,14 @@ from perf_model import get_naive_perf_model_moe, get_naive_perf_model, get_llm_v
 from model_dict import MODEL_DICT
 from hardware_dict import HARDWARE_DICT
 
-import sys
-import os
-
-
 parser = argparse.ArgumentParser(description='Plot Speedup for LLM Models')
 
 parser.add_argument('--max_bs', type=int, default=257, help='Maximum Batch Size')
 parser.add_argument('--max_seq_len', type=int, default=2049, help='Maximum Sequence Length')
 parser.add_argument('--model_name', type=str, default="Mixtral_8x7B", help='Model Name')
-parser.add_argument('--hw1', type=str, default="nvidia_A100", help='First Hardware Name')
-parser.add_argument('--hw2', type=str, default="nvidia_H20", help='Second Hardware Name')
+# Mixtral_8x7B
+parser.add_argument('--hw1', type=str, default="Gaudi2C", help='First Hardware Name')
+parser.add_argument('--hw2', type=str, default="nvidia_A100", help='Second Hardware Name')
 
 args = parser.parse_args()
 

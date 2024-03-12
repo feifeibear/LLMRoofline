@@ -6,9 +6,10 @@ HARDWARE_DICT = {
     "nvidia_H20" : {"flops": 148, "bwd": 4.0},
     "nvidia_A100" : {"flops": 312, "bwd": 2.039},
     "L40S" : {"flops": 362, "bwd": 0.864},
-    "L40" : {"flops": 181, "bwd": 0.864},
-    "L20" : {"flops": 119.5, "bwd": 0.864},
+    "nvidia_L40" : {"flops": 181, "bwd": 0.864},
+    "nvidia_L20" : {"flops": 119.5, "bwd": 0.864},
     "A30" : {"flops": 165, "bwd": 0.933},
     "4090" : {"flops": 330, "bwd": 1.008},
+    "Gaudi2C":{"flops":288, "bwd":2.5},
     
 }
