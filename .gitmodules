@@ -1,0 +1,3 @@
+[submodule "LLM-Viewer"]
+	path = LLM-Viewer
+	url = https://github.com/feifeibear/LLM-Viewer.git
