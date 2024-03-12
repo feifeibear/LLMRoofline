@@ -1,7 +1,6 @@
-# add LLM-Viewer to sys path
-# if USE_LLM_VIEWER:
 import sys
 
+sys.path.insert(0, './LLM-Viewer')
 from model_analyzer import ModelAnalyzer
 
 
