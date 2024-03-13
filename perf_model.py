@@ -18,7 +18,7 @@ def get_ai(bs, in_len, kv_len, h, hi, gqa_grp = 1):
 
 def get_ai_moe(bs, in_len, kv_len, h, hi, gqa_grp, expert_count, activate_expert_count):
     qkv_flops = 6 * bs * in_len * h**2
-    attn_flops =  4 * bs * in_len**2 * h
+    attn_flops =  4 * bs * kv_len**2 * h
     o_flops = 2 * bs * in_len * h * h
     ffn_flops = 2 * 2 * bs * in_len * h * hi * activate_expert_count
 
